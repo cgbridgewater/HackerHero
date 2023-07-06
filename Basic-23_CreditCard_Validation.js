@@ -9,7 +9,40 @@
 
 
 function isCreditCardValid(digitArr){
-
+    // Enter code below
+temp = digitArr[digitArr.length-1]
+tempArr = []
+sum = 0
+    // start loop to exclude end digit, which is saved as temp
+    for (i=digitArr.length-2;i>=0; i--){
+        // filter for odds
+        if(i %2 !== 0){
+            // double the value
+            tempOdd = (digitArr[i] *2)
+            // check value for 9 or greater
+            if(tempOdd>9){
+                // subtract 9 if greater than 9
+                tempOdd -= 9  
+            }
+            // push value to temp array
+            tempArr.push(tempOdd)
+        // if values are even
+        }else if(i %2 == 0){
+            // push to temp array
+            tempArr.push(digitArr[i])
+        }
+    }
+    //loop temp array to add sum of the array indicies 
+    for (i=0; i<tempArr.length; i++){
+    sum += tempArr[i]   
+    }
+    //add the final digit back in
+    sum += temp
+    // check if divisible by 10
+    if(sum %10 == 0){
+        return true
+    } 
+        return false
 }
 
 
